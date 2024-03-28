@@ -1,6 +1,6 @@
 <?php
 
-class Sharp_string {
+class SharpString {
     private $value;
 
     public function __construct($value) {
@@ -8,20 +8,20 @@ class Sharp_string {
     }
 
     public function add($other) {
-        if ($other instanceof Sharp_string) {
-            return new Sharp_string($this->value . $other->value);
+        if ($other instanceof SharpString) {
+            return new SharpString($this->value . $other->value);
         } elseif (is_string($other)) {
-            return new Sharp_string($this->value . $other);
+            return new SharpString($this->value . $other);
         } else {
             throw new \TypeError("Unsupported operand type for +: " . gettype($other));
         }
     }
 
     public function subtract($other) {
-        if ($other instanceof Sharp_string) {
-            return new Sharp_string(str_replace($other->value, "", $this->value));
+        if ($other instanceof SharpString) {
+            return new SharpString(str_replace($other->value, "", $this->value));
         } elseif (is_string($other)) {
-            return new Sharp_string(str_replace($other, "", $this->value));
+            return new SharpString(str_replace($other, "", $this->value));
         } else {
             throw new \TypeError("Unsupported operand type for -: " . gettype($other));
         }
@@ -138,8 +138,8 @@ class Sharp_string {
 if (!debug_backtrace()) {
     // Este bloque se ejecuta solo si el script se ejecuta directamente y no es incluido desde otro script.
 
-    $firstname = new Sharp_string("Steven Clark");
-    $lastname = new Sharp_string("Clark");
+    $firstname = new SharpString("Steven Clark");
+    $lastname = new SharpString("Clark");
 
     $fn = "Steven Clark";
     $ln = "Clark";
@@ -175,12 +175,12 @@ if (!debug_backtrace()) {
     print_r($firstname->toCharArray()); echo "<br />";
     echo $firstname->trim() . "<br />";
 
-    $numeroDecimal = new Sharp_string("1234.55");
-    $numeroOctal = new Sharp_string("01234");
-    $numeroHexadecimal = new Sharp_string("0x1234");
-    $textoNoNumerico1 = new Sharp_string("abc123");
-    $textoNoNumerico2 = new Sharp_string("0abc123");
-    $textoNoNumerico3 = new Sharp_string("0xgbc123");
+    $numeroDecimal = new SharpString("1234.55");
+    $numeroOctal = new SharpString("01234");
+    $numeroHexadecimal = new SharpString("0x1234");
+    $textoNoNumerico1 = new SharpString("abc123");
+    $textoNoNumerico2 = new SharpString("0abc123");
+    $textoNoNumerico3 = new SharpString("0xgbc123");
 
     echo "Convertir a valor:<br />";
     echo "Decimal: " . $numeroDecimal->toValue() . "<br />";
